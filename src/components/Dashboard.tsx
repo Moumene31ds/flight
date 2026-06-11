@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useGameStore, CITIES, AIRCRAFT_MODELS, City, Route } from '@/lib/store/useGameStore';
 import StatCard from './ui/StatCard';
-import FlightMap from './FlightMap';
+import InteractiveMap from './InteractiveMap';
 import LanguageSwitcher from './LanguageSwitcher';
 import { 
   DollarSign, 
@@ -18,11 +18,13 @@ import {
   Plus, 
   Clock, 
   Wrench,
-  AlertCircle,
-  CloudLightning,
-  Sparkles,
+  AlertTriangle,
+  Play,
+  Pause,
+  ChevronRight,
   TrendingUp,
-  BarChart3
+  Award,
+  Globe
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -73,7 +75,9 @@ export default function Dashboard() {
     competitors,
     financeHistory,
     buyCarbonCredits,
-    sellCarbonCredits
+    sellCarbonCredits,
+    gameSpeed,
+    setGameSpeed
   } = useGameStore();
 
   // Local component states
@@ -86,11 +90,18 @@ export default function Dashboard() {
 
   // Auto-tick cycle representing game hours
   useEffect(() => {
+    if (gameSpeed === 'pause') return;
+
+    let delay = 12000; // 1x = 12s
+    if (gameSpeed === '2x') delay = 6000;
+    else if (gameSpeed === '5x') delay = 2400;
+    else if (gameSpeed === '10x') delay = 1200;
+
     const interval = setInterval(() => {
       processGameTick();
-    }, 60000); // Ticks every 60 seconds
+    }, delay);
     return () => clearInterval(interval);
-  }, [processGameTick]);
+  }, [processGameTick, gameSpeed]);
 
   // Update selected airports from map interaction
   const handleMapSelect = (origin: City, destination: City) => {
@@ -179,14 +190,38 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 self-end md:self-auto">
+        <div className="flex flex-wrap items-center gap-3 self-end md:self-auto">
+          {/* Speed Controller Segmented Control */}
+          <div className="flex items-center bg-slate-950/60 border border-white/10 rounded-xl p-1 gap-1">
+            <span className="text-[10px] font-mono font-bold tracking-wider text-slate-400 px-2 uppercase select-none hidden sm:inline-block">
+              {t('speed_control')}:
+            </span>
+            {(['pause', '1x', '2x', '5x', '10x'] as const).map((speed) => {
+              const isActive = gameSpeed === speed;
+              return (
+                <button
+                  key={speed}
+                  onClick={() => setGameSpeed(speed)}
+                  className={`px-2.5 py-1 text-[10px] font-mono font-bold rounded-lg transition-all ${
+                    isActive
+                      ? 'bg-brand-cyan text-slate-950 shadow-[0_0_8px_rgba(6,182,212,0.4)]'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {speed === 'pause' ? '⏸️' : speed}
+                </button>
+              );
+            })}
+          </div>
+
           {/* Manual game cycle trigger */}
           <button 
             onClick={() => processGameTick()}
-            className="flex items-center gap-1.5 px-4 py-2 bg-brand-cyan/20 border border-brand-cyan/30 text-brand-cyan hover:bg-brand-cyan hover:text-slate-950 transition-all rounded-xl text-xs font-bold font-sans"
+            className="flex items-center gap-1.5 px-3 py-2 bg-brand-cyan/20 border border-brand-cyan/30 text-brand-cyan hover:bg-brand-cyan hover:text-slate-950 transition-all rounded-xl text-xs font-bold font-sans"
+            title="Force Next Tick"
           >
             <Clock className="w-3.5 h-3.5" />
-            {t('open_control')} (Cycle {currentTick})
+            <span>Cycle {currentTick}</span>
           </button>
           
           {/* Language selection switcher */}
@@ -230,7 +265,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Flight Arc Map */}
         <div className="lg:col-span-2">
-          <FlightMap onSelectAirports={handleMapSelect} />
+          <InteractiveMap onSelectAirports={handleMapSelect} />
         </div>
 
         {/* Global Market Ticker Sidebar */}

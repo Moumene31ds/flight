@@ -106,14 +106,27 @@ export const CITIES: City[] = [
   { id: 'DXB', name: 'Dubai', code: 'DXB', lat: 25.2532, lng: 55.3657, country: 'United Arab Emirates' },
   { id: 'CDG', name: 'Paris', code: 'CDG', lat: 49.0097, lng: 2.5479, country: 'France' },
   { id: 'SYD', name: 'Sydney', code: 'SYD', lat: -33.9461, lng: 151.1772, country: 'Australia' },
-  { id: 'CAI', name: 'Cairo', code: 'CAI', lat: 30.1219, lng: 31.4056, country: 'Egypt' }
+  { id: 'CAI', name: 'Cairo', code: 'CAI', lat: 30.1219, lng: 31.4056, country: 'Egypt' },
+  { id: 'ALG', name: 'Algiers', code: 'ALG', lat: 36.6910, lng: 3.2154, country: 'Algeria' },
+  { id: 'LAX', name: 'Los Angeles', code: 'LAX', lat: 33.9416, lng: -118.4085, country: 'United States' },
+  { id: 'SIN', name: 'Singapore', code: 'SIN', lat: 1.3644, lng: 103.9915, country: 'Singapore' },
+  { id: 'FRA', name: 'Frankfurt', code: 'FRA', lat: 50.0379, lng: 8.5622, country: 'Germany' },
+  { id: 'BOM', name: 'Mumbai', code: 'BOM', lat: 19.0896, lng: 72.8656, country: 'India' },
+  { id: 'GRU', name: 'São Paulo', code: 'GRU', lat: -23.4356, lng: -46.4731, country: 'Brazil' },
+  { id: 'JNB', name: 'Johannesburg', code: 'JNB', lat: -26.1367, lng: 28.2411, country: 'South Africa' },
+  { id: 'HKG', name: 'Hong Kong', code: 'HKG', lat: 22.3080, lng: 113.9185, country: 'Hong Kong' },
+  { id: 'HNL', name: 'Honolulu', code: 'HNL', lat: 21.3187, lng: -157.9225, country: 'United States' }
 ];
 
 export const AIRCRAFT_MODELS: AircraftModel[] = [
   { id: 'crj900', name: 'Bombardier CRJ-900', range: 2500, efficiency: 3.2, capacity: 76, price: 45000000, leaseRate: 220000 },
   { id: 'b737_800', name: 'Boeing 737-800', range: 5765, efficiency: 2.5, capacity: 189, price: 90000000, leaseRate: 450000 },
   { id: 'a320neo', name: 'Airbus A320neo', range: 6500, efficiency: 2.1, capacity: 180, price: 110000000, leaseRate: 550000 },
-  { id: 'b787_9', name: 'Boeing 787-9', range: 14140, efficiency: 2.3, capacity: 290, price: 250000000, leaseRate: 1200000 }
+  { id: 'b787_9', name: 'Boeing 787-9 Dreamliner', range: 14140, efficiency: 2.3, capacity: 290, price: 250000000, leaseRate: 1200000 },
+  { id: 'b747_8', name: 'Boeing 747-8 Intercontinental', range: 14320, efficiency: 2.8, capacity: 410, price: 380000000, leaseRate: 1800000 },
+  { id: 'a380', name: 'Airbus A380 Superjumbo', range: 15200, efficiency: 3.0, capacity: 525, price: 445000000, leaseRate: 2100000 },
+  { id: 'concorde', name: 'Aérospatiale Concorde (Supersonic)', range: 7222, efficiency: 13.2, capacity: 100, price: 180000000, leaseRate: 900000 },
+  { id: 'b777x', name: 'Boeing 777-9X', range: 13500, efficiency: 2.2, capacity: 384, price: 320000000, leaseRate: 1500000 }
 ];
 
 interface GameState {
@@ -150,6 +163,9 @@ interface GameState {
   fleet: AircraftInstance[];
   routes: Route[];
 
+  // Game Speed
+  gameSpeed: 'pause' | '1x' | '2x' | '5x' | '10x';
+
   // Actions
   buyAircraft: (modelId: string) => void;
   leaseAircraft: (modelId: string) => void;
@@ -159,6 +175,7 @@ interface GameState {
   syncEconomy: (fuelPrice: number, co2TaxRate: number, demandFactor: number, events: MarketEvent[]) => void;
   buyCarbonCredits: (amount: number) => void;
   sellCarbonCredits: (amount: number) => void;
+  setGameSpeed: (speed: 'pause' | '1x' | '2x' | '5x' | '10x') => void;
   processGameTick: () => void;
 }
 
@@ -217,6 +234,8 @@ export const useGameStore = create<GameState>((set, get) => ({
     { id: 'plane_2', modelId: 'a320neo', modelName: 'Airbus A320neo', isLeased: true, condition: 94, status: 'In Service', assignedRouteId: 'route_2' },
     { id: 'plane_3', modelId: 'crj900', modelName: 'Bombardier CRJ-900', isLeased: false, condition: 76, status: 'Under Maintenance', assignedRouteId: null }
   ],
+
+  gameSpeed: '1x',
 
   routes: [
     {
@@ -451,6 +470,10 @@ export const useGameStore = create<GameState>((set, get) => ({
       carbonCredits: carbonCredits - amount,
       carbonHistory: [newTx, ...carbonHistory].slice(0, 10)
     });
+  },
+
+  setGameSpeed: (speed) => {
+    set({ gameSpeed: speed });
   },
 
   processGameTick: () => {

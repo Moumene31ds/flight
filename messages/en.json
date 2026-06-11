@@ -21,7 +21,9 @@
     "fleet_management": "Fleet Management",
     "financials": "Financial Dashboard",
     "no_flights": "No active flights. Establish routes to launch flights.",
-    "open_control": "Toggle Command Center"
+    "open_control": "Toggle Command Center",
+    "speed_control": "Simulation Speed",
+    "pause": "Pause"
   },
   "fleet": {
     "title": "Aircraft Hangar",
