@@ -24,7 +24,11 @@ import {
   ChevronRight,
   TrendingUp,
   Award,
-  Globe
+  Globe,
+  AlertCircle,
+  CloudLightning,
+  Sparkles,
+  BarChart3
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
