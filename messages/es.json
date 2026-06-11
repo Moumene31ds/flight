@@ -1,0 +1,78 @@
+{
+  "dashboard": {
+    "title": "AeroSim AI — Control de Operaciones Globales",
+    "airline_name": "Líneas Aéreas Antigravity",
+    "fleet_size": "Flota Activa",
+    "active_routes": "Rutas Activas",
+    "cash_balance": "Saldo de Caja",
+    "fuel_reserves": "Reservas de Combustible",
+    "co2_quota": "Nivel Tributario CO2",
+    "co2_emissions": "Emisiones Totales",
+    "daily_expenses": "Gastos Diarios",
+    "roi": "Margen de Beneficio (ROI)",
+    "market_updates": "Feed Económico en Vivo",
+    "active_flights_table": "Seguimiento de Vuelos Activos",
+    "flight_no": "Nº Vuelo",
+    "route": "Ruta",
+    "status": "Estado",
+    "load_factor": "Factor de Carga",
+    "profit": "Beneficio Neto",
+    "manage_routes": "Planificación de Rutas",
+    "fleet_management": "Gestión de Flota",
+    "financials": "Tablero Financiero",
+    "no_flights": "No hay vuelos activos. Establezca rutas para iniciar vuelos.",
+    "open_control": "Alternar Centro de Mando"
+  },
+  "fleet": {
+    "title": "Hangar de Aviones",
+    "model": "Modelo de Avión",
+    "range": "Alcance Máximo",
+    "fuel_efficiency": "Eficiencia",
+    "condition": "Estado físico",
+    "status": "Estatus",
+    "action_buy": "Comprar",
+    "action_lease": "Arrendar",
+    "action_maintain": "Mantenimiento",
+    "price": "Precio",
+    "lease_rate": "Tarifa de arrendamiento (mensual)",
+    "in_service": "En Servicio",
+    "maintenance": "En Mantenimiento"
+  },
+  "economy": {
+    "title": "Indicadores del Mercado Global",
+    "fuel_price": "Precio Combustible de Aviación",
+    "fuel_barrel": "por barril",
+    "co2_tax": "Tasa Impuesto CO2",
+    "co2_ton": "por tonelada",
+    "demand_factor": "Demanda de Pasajeros",
+    "events": "Historial de Eventos Económicos"
+  },
+  "alerts": {
+    "new_event": "ACTUALIZACIÓN ECONÓMICA",
+    "fuel_spike": "ADVERTENCIA: Precios de combustible aumentaron por escasez geopolítica.",
+    "demand_surge": "OPTIMISMO: El aumento por vacaciones de verano impulsa la demanda un 25%.",
+    "co2_increase": "REGULACIÓN TRIBUTARIA: Cuotas de carbono ajustadas, aumentando las tasas impositivas."
+  },
+  "carbon_market": {
+    "title": "Bolsa de Créditos de Carbono",
+    "credits_held": "Créditos en Propiedad",
+    "price_per_credit": "Precio Crédito",
+    "buy": "Comprar Créditos",
+    "sell": "Vender Créditos",
+    "history": "Registro de Transacciones de Carbono",
+    "deficit_warning": "¡Emisiones de CO2 exceden los créditos! Penalización aplicada."
+  },
+  "weather": {
+    "title": "Alertas Meteorológicas Extremas",
+    "storms_active": "Frentes de Tormenta Activos",
+    "detour_penalty": "Surgió recargo del 25% por combustible de desvío.",
+    "clear": "Todos los sectores reportan cielos despejados."
+  },
+  "leaderboard": {
+    "title": "Clasificación Mundial de Aerolíneas",
+    "airline": "Aerolínea",
+    "fleet": "Flota",
+    "routes": "Rutas",
+    "score": "Calificación"
+  }
+}

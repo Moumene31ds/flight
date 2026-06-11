@@ -1,0 +1,78 @@
+{
+  "dashboard": {
+    "title": "AeroSim AI — Global Operations Control",
+    "airline_name": "Antigravity Airways",
+    "fleet_size": "Active Fleet",
+    "active_routes": "Active Routes",
+    "cash_balance": "Cash Balance",
+    "fuel_reserves": "Fuel Reserves",
+    "co2_quota": "CO2 Tax Tier",
+    "co2_emissions": "Total Emissions",
+    "daily_expenses": "Daily Expenses",
+    "roi": "Profit Margin (ROI)",
+    "market_updates": "Live Economy Feed",
+    "active_flights_table": "Active Flights Tracking",
+    "flight_no": "Flight No.",
+    "route": "Route",
+    "status": "Status",
+    "load_factor": "Load Factor",
+    "profit": "Net Profit",
+    "manage_routes": "Route Planning",
+    "fleet_management": "Fleet Management",
+    "financials": "Financial Dashboard",
+    "no_flights": "No active flights. Establish routes to launch flights.",
+    "open_control": "Toggle Command Center"
+  },
+  "fleet": {
+    "title": "Aircraft Hangar",
+    "model": "Aircraft Model",
+    "range": "Max Range",
+    "fuel_efficiency": "Efficiency",
+    "condition": "Condition",
+    "status": "Status",
+    "action_buy": "Buy",
+    "action_lease": "Lease",
+    "action_maintain": "Service Aircraft",
+    "price": "Price",
+    "lease_rate": "Lease (monthly)",
+    "in_service": "In Service",
+    "maintenance": "Under Maintenance"
+  },
+  "economy": {
+    "title": "Global Market Ticker",
+    "fuel_price": "Jet Fuel Price",
+    "fuel_barrel": "per barrel",
+    "co2_tax": "CO2 Tax Rate",
+    "co2_ton": "per ton",
+    "demand_factor": "Passenger Demand",
+    "events": "Economic Event Log"
+  },
+  "alerts": {
+    "new_event": "ECONOMIC UPDATE",
+    "fuel_spike": "WARNING: Jet fuel prices spiked due to geopolitical supply concerns.",
+    "demand_surge": "OPTIMISM: Summer holiday surge boosts passenger demand by 25%.",
+    "co2_increase": "TAX REGULATION: Carbon quotas tightened, increasing tax rates."
+  },
+  "carbon_market": {
+    "title": "Carbon Credit Exchange",
+    "credits_held": "Credits Owned",
+    "price_per_credit": "Credit Price",
+    "buy": "Buy Credits",
+    "sell": "Sell Credits",
+    "history": "Carbon Transaction Logs",
+    "deficit_warning": "CO2 emissions exceed credits owned! Surcharge penalty applied."
+  },
+  "weather": {
+    "title": "Severe Weather Reports",
+    "storms_active": "Active Storm Fronts",
+    "detour_penalty": "Detour fuel surcharge (+25%) is active on stormy paths.",
+    "clear": "All air sectors are reporting clear skies."
+  },
+  "leaderboard": {
+    "title": "Global Airline Rankings",
+    "airline": "Airline Company",
+    "fleet": "Fleet",
+    "routes": "Routes",
+    "score": "Score Rating"
+  }
+}

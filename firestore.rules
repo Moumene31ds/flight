@@ -1,0 +1,97 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ==========================================
+    // HELPER FUNCTIONS (الدوال المساعدة)
+    // ==========================================
+
+    // التحقق من أن المستخدم قام بتسجيل الدخول
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // التحقق من أن المستخدم هو صاحب البيانات نفسه
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // التحقق مما إذا كان المستخدم لديه صلاحيات المسؤول (Admin)
+    // يدعم طريقتين: من خلال الـ Custom Claims أو من خلال وثيقة في مجموعة admins
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.admin == true || 
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // ==========================================
+    // SECURITY RULES FOR COLLECTIONS
+    // ==========================================
+
+    // 1. ملفات المستخدمين الشخصية (Users Profiles)
+    match /users/{userId} {
+      // السماح لأي مستخدم مسجل بقراءة الحسابات الأخرى (مثلاً لعرض الاسم في المتصدرين)
+      allow read: if isAuthenticated();
+      // السماح بالتعديل أو الإنشاء فقط لصاحب الحساب نفسه
+      allow create, update: if isOwner(userId);
+      // منع الحذف تماماً إلا للمسؤول
+      allow delete: if isAdmin();
+
+      // الدعم للمجموعات الفرعية مثل saves أو games داخل ملف المستخدم
+      match /saves/{saveId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      match /games/{gameId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // 2. ملفات حفظ الألعاب المباشرة (Direct Game Saves)
+    // في حال كنت تحفظ حالة اللعبة مباشرة في هذه المجموعة باسم معرف المستخدم (document ID = uid)
+    match /saves/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    match /games/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // 3. لوحة المتصدرين (Leaderboard)
+    match /leaderboard/{userId} {
+      // السماح للجميع بقراءة المتصدرين لعرض الترتيب العام
+      allow read: if true;
+      // السماح للمستخدم فقط بإنشاء وتحديث ترتيبه الخاص
+      allow create, update: if isOwner(userId) && 
+        // التحقق من صحة البيانات المحدثة (مثال: التأكد من عدم تزوير الـ userId الممرر في البيانات)
+        request.resource.data.userId == request.auth.uid;
+      // منع الحذف إلا للمسؤول
+      allow delete: if isAdmin();
+    }
+
+    // 4. إعدادات الاقتصاد العالمي وحالة الطقس والأحداث (Global Market & Config)
+    // مثل: أسعار الوقود، الضرائب الكربونية، العواصف النشطة، الأحداث السوقية
+    match /globalConfig/{configId} {
+      allow read: if true; // مقروءة للجميع لتشغيل اللعبة
+      allow write: if isAdmin(); // كتابتها فقط من المسؤول أو السيرفر (Admin SDK)
+    }
+
+    match /marketEvents/{eventId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /storms/{stormId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 5. المشرفين والمسؤولين (Admins Collection)
+    match /admins/{adminId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // تعديل قائمة المشرفين يتم يدوياً من الكونسول أو من خلال السيرفر فقط للحماية القصوى
+    }
+  }
+}

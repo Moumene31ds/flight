@@ -1,0 +1,78 @@
+{
+  "dashboard": {
+    "title": "AeroSim AI — 全球运营控制中心",
+    "airline_name": "无重力航空",
+    "fleet_size": "活跃机队",
+    "active_routes": "活跃航线",
+    "cash_balance": "资金余额",
+    "fuel_reserves": "航油储备",
+    "co2_quota": "碳税等级",
+    "co2_emissions": "总碳排放",
+    "daily_expenses": "每日开支",
+    "roi": "利润率 (ROI)",
+    "market_updates": "实时经济简讯",
+    "active_flights_table": "活跃航班追踪",
+    "flight_no": "航班号",
+    "route": "航线",
+    "status": "状态",
+    "load_factor": "客座率",
+    "profit": "净利润",
+    "manage_routes": "航线规划",
+    "fleet_management": "机队管理",
+    "financials": "财务信息中心",
+    "no_flights": "当前无活跃航班。请规划并开启新航线。",
+    "open_control": "切换控制面板"
+  },
+  "fleet": {
+    "title": "飞机机库",
+    "model": "飞机型号",
+    "range": "最大航程",
+    "fuel_efficiency": "燃油效率",
+    "condition": "机况",
+    "status": "状态",
+    "action_buy": "购买",
+    "action_lease": "租赁",
+    "action_maintain": "维护保养",
+    "price": "价格",
+    "lease_rate": "租金 (每月)",
+    "in_service": "服役中",
+    "maintenance": "维护中"
+  },
+  "economy": {
+    "title": "全球市场指标",
+    "fuel_price": "航空燃油价格",
+    "fuel_barrel": "每桶",
+    "co2_tax": "碳税税率",
+    "co2_ton": "每吨",
+    "demand_factor": "客运需求",
+    "events": "经济事件记录"
+  },
+  "alerts": {
+    "new_event": "经济动态",
+    "fuel_spike": "警告：地缘政治供应紧张导致航空燃油价格飙升。",
+    "demand_surge": "乐观：暑期出游高峰使客运需求增长了 25%。",
+    "co2_increase": "碳税监管：碳配额收紧，提高了碳税税率。"
+  },
+  "carbon_market": {
+    "title": "碳交易排放权市场",
+    "credits_held": "拥有配额数",
+    "price_per_credit": "碳配额价格",
+    "buy": "买入配额",
+    "sell": "卖出配额",
+    "history": "碳交易历史日志",
+    "deficit_warning": "碳排放超出持有的配额！已被课征额外罚金。"
+  },
+  "weather": {
+    "title": "极端气象预警中心",
+    "storms_active": "活跃风暴气旋",
+    "detour_penalty": "航线行经风暴区，加收 (+25%) 绕飞燃油附加费。",
+    "clear": "所有空域汇报晴空万里。"
+  },
+  "leaderboard": {
+    "title": "全球航空公司排行榜",
+    "airline": "航空公司",
+    "fleet": "机队规模",
+    "routes": "航线数",
+    "score": "评分"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "dashboard": {
+    "title": "AeroSim AI — Contrôle des Opérations Globales",
+    "airline_name": "Compagnie Aérienne Antigravity",
+    "fleet_size": "Flotte Active",
+    "active_routes": "Routes Actives",
+    "cash_balance": "Solde de Caisse",
+    "fuel_reserves": "Réserves Carburant",
+    "co2_quota": "Tranche Taxe CO2",
+    "co2_emissions": "Émissions Totales",
+    "daily_expenses": "Dépenses Journalières",
+    "roi": "Marge Bénéficiaire (ROI)",
+    "market_updates": "Flux Économique en Direct",
+    "active_flights_table": "Suivi des Vols Actifs",
+    "flight_no": "N° de Vol",
+    "route": "Route",
+    "status": "Statut",
+    "load_factor": "Facteur de Charge",
+    "profit": "Bénéfice Net",
+    "manage_routes": "Planification de Routes",
+    "fleet_management": "Gestion de Flotte",
+    "financials": "Tableau Financier",
+    "no_flights": "Aucun vol actif. Établissez des routes pour lancer des vols.",
+    "open_control": "Basculer le Centre de Contrôle"
+  },
+  "fleet": {
+    "title": "Hangar d'Avions",
+    "model": "Modèle d'Avion",
+    "range": "Autonomie Max",
+    "fuel_efficiency": "Efficacité",
+    "condition": "État physique",
+    "status": "Statut",
+    "action_buy": "Acheter",
+    "action_lease": "Louer",
+    "action_maintain": "Entretenir l'appareil",
+    "price": "Prix",
+    "lease_rate": "Loyer (mensuel)",
+    "in_service": "En Service",
+    "maintenance": "En Maintenance"
+  },
+  "economy": {
+    "title": "Téléscripteur du Marché Global",
+    "fuel_price": "Prix du Carburant",
+    "fuel_barrel": "par baril",
+    "co2_tax": "Taux Taxe CO2",
+    "co2_ton": "par tonne",
+    "demand_factor": "Demande Passagers",
+    "events": "Journal des Événements Économiques"
+  },
+  "alerts": {
+    "new_event": "MISE À JOUR ÉCONOMIQUE",
+    "fuel_spike": "ALERTE: Flambée des prix du carburant due à des tensions géopolitiques.",
+    "demand_surge": "OPTIMISME: La vague de vacances d'été stimule la demande des passagers de 25%.",
+    "co2_increase": "RÉGULATION TAXE: Les quotas de carbone ont été durcis, augmentant les taux de taxe."
+  },
+  "carbon_market": {
+    "title": "Bourse des Crédits Carbone",
+    "credits_held": "Crédits Détenus",
+    "price_per_credit": "Prix Unitaire",
+    "buy": "Acheter Crédits",
+    "sell": "Vendre Crédits",
+    "history": "Journal des Transactions Carbone",
+    "deficit_warning": "Vos émissions dépassent vos quotas ! Pénalité financière appliquée."
+  },
+  "weather": {
+    "title": "Rapports Météo Sévères",
+    "storms_active": "Fronts de Tempête Actifs",
+    "detour_penalty": "Surcharge carburant de déviation (+25%) appliquée sur les trajets orageux.",
+    "clear": "Tous les secteurs aériens signalent un ciel dégagé."
+  },
+  "leaderboard": {
+    "title": "Classement Mondial des Compagnies",
+    "airline": "Compagnie Aérienne",
+    "fleet": "Flotte",
+    "routes": "Routes",
+    "score": "Score Global"
+  }
+}
